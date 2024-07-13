@@ -1,0 +1,31 @@
+Global:
+  logLevel: info
+servers:
+  - ip: "0.0.0.0"
+    port: 8090
+    match:
+      Path:
+        - type: "exact"
+          value: ""
+        - type: "regex"
+          value: "^/test/(.+)/end$"
+        - type: "prefix"
+          value: "/ws"
+    upstream:
+      ip: "192.168.1.1"
+      port: 3000
+      override:
+        host: "this-is-new-host"
+        headers:
+          - key: "Origin"
+            value: "this-is-new-origin"
+        websocketPayload:
+          - type: "exact"
+            match: "this-is-a-test"
+            value: "this-is-a-test (is changed by proxy)"
+          - type: "regex"
+            match: ".*123"
+            value: "change 123 (is changed by proxy)"
+          - type: "regex"
+            match: ".*abc.*"
+            value: "change abc (is changed by proxy)"
