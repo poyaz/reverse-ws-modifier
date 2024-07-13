@@ -1,5 +1,6 @@
 ### Custom template
 
+build/*
 tmp/*
 config.yaml
 

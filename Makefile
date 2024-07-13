@@ -11,7 +11,7 @@ IMAGE_NAME ?= ghcr.io/poyaz/reverse-ws-modifier/$(BINARY)
 build: build/$(BINARY)
 
 build/$(BINARY): $(SOURCES)
-	CGO_ENABLED=0 go build -o build/$(BINARY) $(BUILD_FLAGS) -ldflags "$(LDFLAGS)" .
+	CGO_ENABLED=0 go build -o build/$(BINARY) $(BUILD_FLAGS) -ldflags "$(LDFLAGS)" ./cli
 
 .PHONY: build-arm64
 build-arm64:
