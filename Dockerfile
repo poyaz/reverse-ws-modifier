@@ -14,7 +14,7 @@ RUN make build
 
 FROM alpine:3.19
 
-COPY --from=build /tmp/go/build/sni /app/sni
+COPY --from=build /tmp/go/build/reverse-ws-modifier /app/reverse-ws-modifier
 
 WORKDIR /app
 
