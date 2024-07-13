@@ -1,5 +1,3 @@
-include Makefile.vars.mk
-
 BINARY ?= reverse-ws-modifier
 SOURCES = $(shell find . -name '*.go')
 VERSION ?= $(shell git describe --tags --always --dirty --match "v*")
