@@ -3,11 +3,13 @@ package http
 import (
 	"context"
 	"errors"
-	"github.com/poyaz/reverse-ws-modifier/internal/domain"
-	"github.com/sirupsen/logrus"
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/sirupsen/logrus"
+
+	"github.com/poyaz/reverse-ws-modifier/internal/domain"
 )
 
 type handler struct {
@@ -53,6 +55,7 @@ func (h *handler) Run() error {
 			}
 			return
 		}
+		h.log.WithFields(logrus.Fields{"host": r.Host, "uri": r.URL.RequestURI()}).Info("New request income")
 
 		ws.Proxy(w, r)
 	})
